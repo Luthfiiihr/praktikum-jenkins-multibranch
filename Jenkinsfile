@@ -2,13 +2,14 @@ pipeline {
     agent {
         docker {
             image 'python:3.10'
+            args '-u root'
         }
     }
-    
+
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'pip install --user requirements.txt'
+                sh 'pip install -r requirements.txt'
             }
         }
 
